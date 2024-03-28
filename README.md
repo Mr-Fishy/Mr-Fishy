@@ -10,11 +10,11 @@
 - School! I'm currently a student at [SPU](https://spu.edu)!
 
 ## Language Experience!
-<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/master/images/cpp.svg' width='30'/>
-<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/master/images/python.svg' width='30'/>
-<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/master/images/html.svg' width='30'/>
-<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/master/images/css.svg' width='30'/>
-<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/master/images/javascript.svg' width='30'/>
+<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/main/images/cpp.svg' width='30'/>
+<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/main/images/python.svg' width='30'/>
+<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/main/images/html.svg' width='30'/>
+<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/main/images/css.svg' width='30'/>
+<img src = 'https://github.com/Mr-Fishy/Mr-Fishy/blob/main/images/javascript.svg' width='30'/>
 
 ## About Me!
 ```cpp
