@@ -1,7 +1,7 @@
 # 👋 Hello, [Evan here!]()
 
 [![Linkedin Badge](https://img.shields.io/badge/Evan_Fish-blue?style=flat&logo=Linkedin)](www.linkedin.com/in/evan-fish)
-[![Email Badge](https://img.shields.io/badge/Evan_Fish-lightgray?style=flat&logo=Gmail)](mailto:evanjfish@gmail.com)
+[![Email Badge](https://img.shields.io/badge/evanjfish@gmail.com-lightgray?style=flat&logo=Gmail)](mailto:evanjfish@gmail.com)
 
 ## What I'm Working on!
 - [Ocean](https://github.com/Mr-Fishy/Ocean)! My continuous application / game engine project. 
