@@ -5,7 +5,6 @@
 
 ## What I'm Working on!
 - [Ocean](https://github.com/Mr-Fishy/Ocean)! My continuous application / game engine project. 
-- [RiverUI]()! A UI building library designed to be "vector" focused and easy to use like [imgui](https://github.com/ocornut/imgui) or [nanovg](https://github.com/memononen/nanovg)!
 
 - School! I'm currently a student at [SPU](https://spu.edu)!
 
