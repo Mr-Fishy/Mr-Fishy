@@ -4,7 +4,7 @@
 [![Email Badge](https://img.shields.io/badge/evanjfish@gmail.com-lightgray?style=flat&logo=Gmail)](mailto:evanjfish@gmail.com)
 
 ## What I'm Working on!
-- [Ocean](https://github.com/Mr-Fishy/Ocean)! My continuous application / game engine project. 
+- [Ocean](https://github.com/Mr-Fishy/Ocean)! A continuous application / game engine project that I lead a small team to develop. 
 
 - School! I'm currently a student at [SPU](https://spu.edu)!
 
