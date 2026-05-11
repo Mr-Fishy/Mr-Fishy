@@ -5,13 +5,13 @@ Passionate about system architecture, embedded systems, and graphics
 
 ## Skills
 - System Architecture
-- C++
+- Techinical Writing
 - Embedded Systems
+- C++
 - Kotlin
 - Vulkan
 
 ## Projects
-- [Ocean](https://github.com/Lefihm/Ocean)
 - [Baja 2025](https://github.com/uniqueident/Baja-2025)
 
 ## Contact
