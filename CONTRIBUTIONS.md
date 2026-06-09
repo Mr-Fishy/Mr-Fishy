@@ -1,6 +1,6 @@
 # Contribution Log<!-- omit in toc -->
 
-- [Contribution \[#\]: \[Issue Title\]](#contribution--issue-title)
+- [Contribution #1: Animated sprite for sprite component](#contribution-1-animated-sprite-for-sprite-component)
   - [Why I Chose This Issue](#why-i-chose-this-issue)
   - [Understanding the Issue](#understanding-the-issue)
   - [Reproduction Process](#reproduction-process)
@@ -11,18 +11,18 @@
   - [Learnings \& Reflections](#learnings--reflections)
   - [Resources Used](#resources-used)
 
-## Contribution [#]: [Issue Title]
+## Contribution #1: Animated sprite for sprite component
 
-**Contribution Number:** [1 / 2 / 3]  
-**Student:** [Your Name]  
-**Issue:** [GitHub issue link]  
-**Status:** [Phase I / Phase II / Phase III / Phase IV] [In Progress / Complete]
+**Contribution Number:** 1  
+**Student:** Evan Fish  
+**Issue:** [[GitHub issue link]](https://github.com/ezEngine/ezEngine/issues/1706)  
+**Status:** Phase I Complete
 
 ---
 
 ### Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+This issue interests me as I have explored and attempted game engine development beforehand. I find the low-level constraints interesting and very engaging. This issue works within a game engine, and specifically adresses the sprite component that is within the engine. Which caught my eye as I have had previous experience working with sprites, and I think that I can bring a interesting perspective to the feature.
 
 ---
 
