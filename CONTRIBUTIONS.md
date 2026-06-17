@@ -127,7 +127,11 @@ Using UMPIRE framework (adapted):
 
 **Implement:** [Link to your branch/commits as you work]
 
-**Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
+**Review:**
+
+- [ ] Do the new properties show up cleanly in the ezEditor?
+- [ ] Is versioning handled correctly in serialization so old scenes don't break?
+- [ ] Does the `Delete` end action correctly clean up the entity without crashing the renderer?
 
 **Evaluate:** I will verify this works by loading an existing sample scene with a static sprite (to ensure backwards compatibility works), then creating a new entity with a 4x4 explosion spritesheet. I will test the loop toggle, ensure the max loops limits playback, and confirm the entity vanishes when set to `Delete`. Finally, I will disable `MaxScreenSize` and walk the camera backwards to ensure the sprite shrinks infinitely instead of clamping.
 
