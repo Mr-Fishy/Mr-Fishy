@@ -129,9 +129,9 @@ Using UMPIRE framework (adapted):
 
 **Review:**
 
-- [ ] Do the new properties show up cleanly in the ezEditor?
-- [ ] Is versioning handled correctly in serialization so old scenes don't break?
-- [ ] Does the `Delete` end action correctly clean up the entity without crashing the renderer?
+- [x] Do the new properties show up cleanly in the ezEditor?
+- [x] Is versioning handled correctly in serialization so old scenes don't break?
+- [x] Does the `Delete` end action correctly clean up the entity without crashing the renderer?
 
 **Evaluate:** I will verify this works by loading an existing sample scene with a static sprite (to ensure backwards compatibility works), then creating a new entity with a 4x4 explosion spritesheet. I will test the loop toggle, ensure the max loops limits playback, and confirm the entity vanishes when set to `Delete`. Finally, I will disable `MaxScreenSize` and walk the camera backwards to ensure the sprite shrinks infinitely instead of clamping.
 
@@ -139,44 +139,50 @@ Using UMPIRE framework (adapted):
 
 ### Testing Strategy
 
-#### Unit Tests
-
-- [ ] Test case 1: [Description]
-- [ ] Test case 2: [Description]
-- [ ] Test case 3: [Description]
-
-#### Integration Tests
-
-- [ ] Integration scenario 1
-- [ ] Integration scenario 2
-
 #### Manual Testing
 
-[What you tested manually and results]
+- **Static vs. Animated State:** Placed a static sprite and an animated sprite in the same scene. Verified that the static sprite correctly uses the `ezRenderData::Caching::IfStatic` flag for performance, while the animated sprite correctly bypasses caching (`ezRenderData::Caching::Never`) to update its UV coordinates per frame without freezing.
+- **End Action Behaviors:** - Tested `Loop` to ensure the animation seamlessly wraps around without stuttering (by retaining the remainder of the time delta).
+  - Tested `Stop` combined with the `Loops` counter (e.g., set to 2). Verified the animation plays exactly twice and parks cleanly on the final frame of the spritesheet.
+  - Tested `Destroy` with a `Loops` counter. Confirmed that `GetWorld()->DeleteObjectNow()` is called and the entity is safely removed from the scene without crashing the renderer.
+- **Screen Size Toggle:** Toggled `UseMaxScreenSize` on and off while moving the camera backward. Verified that disabling it successfully passes `ezMath::HighValue<float>()` to the shader, allowing the sprite to scale infinitely instead of clamping.
+- **Backward Compatibility:** Loaded an older scene containing version 3 `ezSpriteComponent` data. Verified that the version 4 deserialization correctly defaults the new animation properties without breaking existing objects.
 
 ---
 
 ### Implementation Notes
 
-#### Week [X] Progress
+#### Week 1 Progress
 
-[What you built this week, challenges faced, decisions made]
+This week focused on introducing frame-based spritesheet animation directly into the `ezSpriteComponent` without requiring external animation graphs. The core challenge was processing time and state within a component that was originally designed to be mostly static.
 
-#### Week [Y] Progress
+**Challenges Faced:**
 
-[Continue documenting as you work]
+1. **Loop Timing Desync:** Initially, when checking if the accumulated time exceeded the total animation time, the timer wasn't being reset correctly, causing the loop counter to increment wildly every frame after the first cycle. This was fixed by subtracting the precise `TotalAnimTime` from the timer, which also preserves fractional frame time to prevent visual stuttering.
+2. **Render Data Caching:** Animated sprites were freezing on their first frame unless forced to "Dynamic" mode. I discovered ezEngine caches render data for static objects to save CPU cycles. I updated `OnMsgExtractRenderData` to dynamically flag the component as `ezRenderData::Caching::Never` only if `m_bIsAnimated` is true, preserving the engine's optimization for standard static sprites.
+
+**Decisions Made:**
+
+- Upgraded `ezSpriteComponentManager` to `ezComponentManagerSimple` with `ezComponentUpdateType::Always` so the component receives an `Update()` tick to process delta time.
+- Removed a redundant "Loop" boolean in favor of an `ezSpriteAnimationEndAction` enum (`Loop`, `Stop`, `Destroy`), making the component's UI cleaner and the behavior mutually exclusive.
 
 #### Code Changes
 
-- **Files modified:** [List]
-- **Key commits:** [Links to important commits]
-- **Approach decisions:** [Why you chose certain approaches]
+- **Files modified:**
+  - `RendererCore/Components/SpriteComponent.h`
+  - `RendererCore/Components/SpriteComponent.cpp`
+- **Key commits:**
+  - [6c23107](https://github.com/ezEngine/ezEngine/pull/1967/changes/6c2310742d7238ed8da6660b64d36747d4081104): Made the primary changes necessary for the feature.
+  - [ab308ec](https://github.com/ezEngine/ezEngine/pull/1967/commits/ab308ec9cf1bee8992e204117078b0ed71ec06bd): Made corrections to ensure that the feature supported the requested behavior, and fixed the timing and caching issues.
+- **Approach decisions:**
+  - Decided to handle the "Max Screen Size" bypass on the component side (passing a massive float value) rather than modifying the core rendering pipeline or shader permutations, minimizing the risk of side effects in other rendering modules.
+  - I decided to go with the "Is Animated" toggle rather than the "Loop" toggle as it is more self-descriptive and reduces confusion between "Loop" and "Restart" terminology. Instead the "Is Animated" controls whether the sprite is considered for caching as well as it allows quick-exit from update calls. Then I added the requested "Restart", "Delete", "Nothing" actions to "Loop", "Stop", "Destroy" as they are more intuitive for end-users.
 
 ---
 
 ### Pull Request
 
-**PR Link:** [GitHub PR URL when submitted]
+**PR Link:** <https://github.com/ezEngine/ezEngine/pull/1967>
 
 **PR Description:** [Draft or final PR description - much of the content above can be adapted]
 
